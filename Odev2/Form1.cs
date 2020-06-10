@@ -20,10 +20,31 @@ namespace Odev2
         int sayi_olustur, sayi1, sayi2, sayi3, sayi4, asilsayi, sayackac=0;
         //Hem formload kısmında hem de button_click kısmında kullanacağım değişkenleri golablde tanımladım
 
+        public static int galatasaray()
+        {
+            Random rd = new Random(); //bir rastgele nesnesi oluşturdum
+            int a, b, c, d, sayi; // gerekli değişkenleri atadım
+            for (int i = 0; true; i++) //istediğim sayıyı oluşturana dek sürecek bir sonsuz dögü tasarladım
+            {
+                a = rd.Next(0, 10); //binler basamağını atadım
+                b = rd.Next(0, 10);//yüzler basamağını atadım
+                c = rd.Next(0, 10);//onlar basamağını atadım
+                d = rd.Next(0, 10);//birler basamağını atadım
+                if (a != b && a != 0 && a != c && a != d && b != c && b != d && c != d)
+                //her rakamın farklı olduğunu ve sayının 4 rakamdan oluştuğunu kontrol ettirdim
+                {
+                    break;
+                    //sonsuz döngüyü kırdım
+                }
+            }
+            sayi = (a * 1000) + (b * 100) + (c * 10) + d; //sayımı oluşturdum
+            return sayi; //oluşturduğum sayıyı dışarıya verdim
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             label1.Hide(); //henüz tahmin olmadığı için tahmin sonucumu gizledim
-            sayi_olustur = HalilIbrahimCavusoglu.galatasaray();
+            sayi_olustur = galatasaray();
             //Oluşturduğum bir başka class içindeki metod yardımı ile rakamları farklı 4 basamaklı rastgele sayımı oluşturdum
             asilsayi = sayi_olustur; //sayı üzerinde denetim yapabilmem için sayimi değişkene sabitledim
             sayi4 = sayi_olustur % 10; //birler basamağını buldum
