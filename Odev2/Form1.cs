@@ -44,6 +44,7 @@ namespace Odev2
         private void Form1_Load(object sender, EventArgs e)
         {
             label1.Hide(); //henüz tahmin olmadığı için tahmin sonucumu gizledim
+            label3.Hide();
             sayi_olustur = galatasaray();
             //Oluşturduğum bir başka class içindeki metod yardımı ile rakamları farklı 4 basamaklı rastgele sayımı oluşturdum
             asilsayi = sayi_olustur; //sayı üzerinde denetim yapabilmem için sayimi değişkene sabitledim
@@ -74,9 +75,10 @@ namespace Odev2
                 MessageBox.Show("Bütün rakamları farklı olan 4 basamaklı bir sayı girmeniz gerekmektedir!");
                 //hata durumunda, hata mesajı gönderdim
                 label1.Hide();
+                label3.Hide();
                 //bir hata durumu söz konusu olduğu için tahmin sonucunu sakladım
             }
-            else label1.Show(); //hata yoksa tahmin sonucunu göstermeye devam ettim
+            else label1.Show(); label3.Show(); //hata yoksa tahmin sonucunu göstermeye devam ettim
             if (a == sayi1) // binler basamağını kontrol ettirdim
             {
                 artisayac++;
@@ -109,7 +111,8 @@ namespace Odev2
             {
                 eksisayac++;
             }
-            label1.Text = "+" + artisayac.ToString() + ", -" + eksisayac.ToString(); //tahmin sonucunu ekrana yazdırdım
+            label1.Text = artisayac.ToString() + " sayi adet hem mevcut hem de yeri doğru"; //tahmin sonucunu ekrana yazdırdım
+            label3.Text = eksisayac.ToString() + " sayi mevcut ancak yeri doğru değil";
             if(Int32.Parse(textBox1.Text) == asilsayi) //sonucun doğruluğunu denetledim
             {
                 MessageBox.Show(sayackac.ToString() + " kerede bildiniz!"); //sayaç yardımı ile kaç kerede bildiğini ekrana yazdırdım
