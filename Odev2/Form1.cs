@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace Odev2
 {
+
     public partial class Form1 : Form
     {
         public Form1()
@@ -41,8 +42,12 @@ namespace Odev2
             return sayi; //oluşturduğum sayıyı dışarıya verdim
         }
 
+
         private void Form1_Load(object sender, EventArgs e)
         {
+            FormName frmname = new FormName();
+            frmname.Owner = this;
+            frmname.Show();
             label1.Hide(); //henüz tahmin olmadığı için tahmin sonucumu gizledim
             label3.Hide();
             sayi_olustur = galatasaray();
