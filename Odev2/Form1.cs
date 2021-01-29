@@ -20,6 +20,69 @@ namespace Odev2
         }
 
         int sayi_olustur, sayi1, sayi2, sayi3, sayi4, asilsayi, sayackac;
+        bool darkTheme = false;
+
+        private void koyuTemaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!darkTheme)
+            {
+                foreach (var lbl in Controls.OfType<Label>())
+                {
+                    lbl.ForeColor = Color.LightSteelBlue;
+                    if (lbl.Name == label1.Name)
+                    {
+                        lbl.ForeColor = Color.GreenYellow;
+                    }
+
+                    if (lbl.Name == label3.Name)
+                    {
+                        lbl.ForeColor = Color.Tomato;
+                    }
+                }
+                this.BackColor = Color.FromArgb(35, 40, 50);
+                foreach (var item in menuStrip1.Items.OfType<ToolStripMenuItem>())
+                {
+                    item.ForeColor = Color.LightSteelBlue;
+                }
+                textBox1.BackColor = Color.FromArgb(45, 50, 60);
+                textBox1.ForeColor = Color.White;
+                button1.BackColor = Color.LightSlateGray;
+                button1.FlatStyle = FlatStyle.Popup;
+                menuStrip1.Items[2].Text = "Açık Tema";
+                darkTheme = true;
+            }
+            else
+            {
+                foreach (var lbl in Controls.OfType<Label>())
+                {
+                    lbl.ForeColor = Color.Black;
+                    if (lbl.Name == label1.Name)
+                    {
+                        lbl.ForeColor = Color.DarkGreen;
+                    }
+
+                    if (lbl.Name == label3.Name)
+                    {
+                        lbl.ForeColor = Color.DarkRed;
+                    }
+                }
+                this.BackColor = Color.FromKnownColor(KnownColor.ControlLight);
+                foreach (var item in menuStrip1.Items.OfType<ToolStripMenuItem>())
+                {
+                    item.ForeColor = Color.Black;
+                }
+                textBox1.BackColor = Color.White;
+                textBox1.ForeColor = Color.Black;
+                button1.BackColor = Color.FromKnownColor(KnownColor.ControlLight);
+                button1.FlatStyle = FlatStyle.Standard;
+                menuStrip1.Items[2].Text = "Koyu Tema";
+                darkTheme = false;
+            }
+        }
+        private void acikTemaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.BackColor = Color.White;
+        }
 
         private void yenidenBaşlatToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -59,6 +122,8 @@ namespace Odev2
             sayackac = 0;
             label1.Hide(); //henüz tahmin olmadığı için tahmin sonucumu gizledim
             label3.Hide();
+            label8.Hide();
+            labelGiris.Hide();
             sayi_olustur = galatasaray();
             //Oluşturduğum bir başka class içindeki metod yardımı ile rakamları farklı 4 basamaklı rastgele sayımı oluşturdum
             asilsayi = sayi_olustur; //sayı üzerinde denetim yapabilmem için sayimi değişkene sabitledim
@@ -77,10 +142,6 @@ namespace Odev2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //if (textBox1.Text.Length - 1 != 4)
-            //{
-            //    MessageBox.Show("4 haneli bir sayi girmelisiniz!", "HATA", MessageBoxIcon.Error);
-            //}
             int a, b, c, d, sayi, yerdogru=0, sayidogru=0; // gerekli değişkenleri atadım
             sayackac++; //globalde tanımladığım sayacı arttırarak kullanıcın kaç kez deneme yaptığını bulacağım
             labelScore.Text = sayackac.ToString();
@@ -97,14 +158,15 @@ namespace Odev2
             {
                 MessageBox.Show("Bütün rakamları farklı olan 4 basamaklı bir sayı girmeniz gerekmektedir!", "HATA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //hata durumunda, hata mesajı gönderdim
-                label1.Hide();
-                label3.Hide();
-                //bir hata durumu söz konusu olduğu için tahmin sonucunu sakladım
             }
             else
             {
+                labelGiris.Text = textBox1.Text;
                 label1.Show();
-                label3.Show(); //hata yoksa tahmin sonucunu göstermeye devam ettim
+                label3.Show();
+                label8.Show();
+                labelGiris.Show();
+                //hata yoksa tahmin sonucunu ve son tahmini göstermeye devam ettim
             }
             if (a == sayi1) // binler basamağını kontrol ettirdim
             {
@@ -147,6 +209,7 @@ namespace Odev2
                     File.WriteAllText(Environment.CurrentDirectory + @"\highscore.txt", labelName.Text + ":" + sayackac.ToString() + "\r\n");
                 }
                 DialogResult dr = MessageBox.Show(sayackac.ToString() + " kerede bildiniz! Tekrar Oynamak İster Misiniz?","Tebrikler!",MessageBoxButtons.YesNo,MessageBoxIcon.Information);
+                //Oyuncuya tekrar oynamak isteyip istemediğini sordum ve sonuca göre oyunu tekrar başlattım veya kapattım
                 if (dr == DialogResult.Yes)
                 {
                     Application.Restart();
@@ -156,6 +219,9 @@ namespace Odev2
                     Application.Exit();
                 }
             }
+            textBox1.Text = "";
+            //Oyunun oynanma hızı ve kolaylığı açısından textboxu sıfırladım.
+            //Oyuncu, son tahminini soldaki labeldan görmeye devam edebilecek
         }
     }
 }
