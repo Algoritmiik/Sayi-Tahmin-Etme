@@ -21,21 +21,25 @@ namespace Odev2
 
         int sayi_olustur, sayi1, sayi2, sayi3, sayi4, asilsayi, sayackac;
         bool darkTheme = false;
+        //Gerekli değişkenleri globalde tanımladım
 
         private void nasılOynanırToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormOynanis oynanis = new FormOynanis();
             oynanis.Show();
+            //Nasıl oynandığını yazan formu açtım
         }
 
         private void enYüksekPuanToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormSkor skr = new FormSkor();
             skr.Show();
+            //Skorları gösteren formu açtım
         }
 
         private void koyuTemaToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Temanın koyu veya açık gösterilmesini sağladım
             if (!darkTheme)
             {
                 foreach (var lbl in Controls.OfType<Label>())
@@ -91,18 +95,12 @@ namespace Odev2
                 darkTheme = false;
             }
         }
-        private void acikTemaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.BackColor = Color.White;
-        }
 
         private void yenidenBaşlatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Restart();
+            //İstenilirse oyun baştan başlıyor
         }
-
-
-        //Hem formload kısmında hem de button_click kısmında kullanacağım değişkenleri golablde tanımladım
 
         public static int galatasaray()
         {

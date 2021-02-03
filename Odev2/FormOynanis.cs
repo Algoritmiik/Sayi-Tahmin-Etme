@@ -21,6 +21,7 @@ namespace Odev2
         {
             richTextBox1.Text = "Oyun başladığında otomatik olarak her basamağı farklı, dört basamaklı bir sayı belirlenir. Oyuncu her defasında bu sayıyı bilmeye çalışacaktır. Her tahmininizde, tahminizin doğruluğuna göre size iki farklı dönüt sağlanacaktır. Bu dönütlere göre tahmininizi düzenleyip, oyunun aklında tuttuğu sayıyı bilmeye çalışmalısınız. Doğru tahminde bulunduğunuzda, oyunu kazanmış olacaksınız. İyi Oyunlar!";
             richTextBox1.Enabled = false;
+            //Nasıl oynandığını yazdırdım
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Odev2
             int pos = skor.IndexOf(':');
             listBox1.Items.Add(skor.Substring(0, pos+1) + " " + skor.Substring(pos + 1));
             listBox1.Enabled = false;
+            //en iyi skoru yapan oyuncuyu yazdırdım
         }
     }
 }
