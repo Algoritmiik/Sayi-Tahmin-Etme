@@ -21,6 +21,7 @@ namespace Odev2
         private void FormName_Load(object sender, EventArgs e)
         {
             this.Owner.Enabled = false;
+            this.ActiveControl = textBox1;
         }
 
         private void FormName_FormClosed(object sender, FormClosedEventArgs e)

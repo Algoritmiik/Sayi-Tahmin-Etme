@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,6 +62,7 @@
             // 
             // button1
             // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button1.Location = new System.Drawing.Point(123, 97);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
@@ -213,12 +215,14 @@
             this.nasılOynanırToolStripMenuItem.Name = "nasılOynanırToolStripMenuItem";
             this.nasılOynanırToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.nasılOynanırToolStripMenuItem.Text = "Nasıl Oynanır?";
+            this.nasılOynanırToolStripMenuItem.Click += new System.EventHandler(this.nasılOynanırToolStripMenuItem_Click);
             // 
             // enYüksekPuanToolStripMenuItem
             // 
             this.enYüksekPuanToolStripMenuItem.Name = "enYüksekPuanToolStripMenuItem";
             this.enYüksekPuanToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
             this.enYüksekPuanToolStripMenuItem.Text = "En Yüksek Puan";
+            this.enYüksekPuanToolStripMenuItem.Click += new System.EventHandler(this.enYüksekPuanToolStripMenuItem_Click);
             // 
             // koyuTemaToolStripMenuItem
             // 
@@ -267,9 +271,10 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Düşün Tahmin";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

@@ -22,6 +22,18 @@ namespace Odev2
         int sayi_olustur, sayi1, sayi2, sayi3, sayi4, asilsayi, sayackac;
         bool darkTheme = false;
 
+        private void nasılOynanırToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormOynanis oynanis = new FormOynanis();
+            oynanis.Show();
+        }
+
+        private void enYüksekPuanToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormSkor skr = new FormSkor();
+            skr.Show();
+        }
+
         private void koyuTemaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!darkTheme)
